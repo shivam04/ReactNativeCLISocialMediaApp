@@ -5,6 +5,8 @@
  * @format
  */
 
+import { Text } from 'react-native';
+import { getFontFamily } from './helper';
 import {
   SafeAreaProvider,
   SafeAreaView,
@@ -14,7 +16,11 @@ function App() {
 
   return (
     <SafeAreaProvider>
-      <SafeAreaView />
+      <SafeAreaView>
+        <Text style={{ fontSize: 50, fontFamily: getFontFamily('Inter24pt', '100') }}>
+          Hello World!
+        </Text>
+      </SafeAreaView>
     </SafeAreaProvider>
   );
 }
