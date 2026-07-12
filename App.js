@@ -17,7 +17,7 @@ function App() {
   return (
     <SafeAreaProvider>
       <SafeAreaView>
-        <Text style={{ fontSize: 50, fontFamily: getFontFamily('Inter24pt', '100') }}>
+        <Text style={{ fontSize: 50, fontFamily: getFontFamily('Inter_24pt', '100') }}>
           Hello World!
         </Text>
       </SafeAreaView>

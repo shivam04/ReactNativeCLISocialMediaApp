@@ -1,26 +1,32 @@
+import { Platform } from 'react-native';
+
 export const getFontFamily = (baseFont = 'Inter', weight) => {
+    // Android matches font files by filename (e.g. "Inter_28pt-Thin"),
+    // iOS matches by the font's internal PostScript name (e.g. "Inter28pt-Thin").
+    const family = Platform.OS === 'ios' ? baseFont.replace(/_/g, '') : baseFont;
+
     switch (weight) {
         case '100':
-            return `${baseFont}-Thin`;
+            return `${family}-Thin`;
         case '200':
-            return `${baseFont}-ExtraLight`;
+            return `${family}-ExtraLight`;
         case '300':
-            return `${baseFont}-Light`;
+            return `${family}-Light`;
         case 'normal':
         case '400':
-            return `${baseFont}-Regular`;
+            return `${family}-Regular`;
         case '500':
-            return `${baseFont}-Medium`;
+            return `${family}-Medium`;
         case '600':
-            return `${baseFont}-SemiBold`;
+            return `${family}-SemiBold`;
         case 'bold':
         case '700':
-            return `${baseFont}-Bold`;
+            return `${family}-Bold`;
         case '800':
-            return `${baseFont}-ExtraBold`;
+            return `${family}-ExtraBold`;
         case '900':
-            return `${baseFont}-Black`;
+            return `${family}-Black`;
         default:
-            return `${baseFont}-Regular`;
+            return `${family}-Regular`;
     }
 };
