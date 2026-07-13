@@ -18,8 +18,9 @@ import UserPost from '../../components/UserPost/UserPost';
 import { useEffect, useState } from 'react';
 import { scaleFontSize } from '../../styles/scaling';
 import globalStyle from '../../styles/globalStyle';
+import { Routes } from '../../navigation/Routes';
 
-const Home = () => {
+const Home = ({ navigation }) => {
     const userPosts = [
         {
             firstName: 'Allison',
@@ -164,7 +165,10 @@ const Home = () => {
                         <>
                             <View style={style.header}>
                                 <Title title={"Let's Explore"} />
-                                <TouchableOpacity style={style.messageIcon}>
+                                <TouchableOpacity
+                                    style={style.messageIcon}
+                                    onPress={() => { navigation.navigate(Routes.Profile) }}
+                                >
                                     <FontAwesomeIcon
                                         icon={faEnvelope}
                                         size={scaleFontSize(20)}
