@@ -10,6 +10,7 @@ import {
     faHeart,
     faMessage,
 } from '@fortawesome/free-regular-svg-icons';
+import { horizontalScale, scaleFontSize } from '../../styles/scaling';
 const UserPost = props => {
     return (
         <View style={style.userPostContainer}>
@@ -17,7 +18,7 @@ const UserPost = props => {
                 <View style={style.userContainer}>
                     <UserProfileImage
                         profileImage={props.profileImage}
-                        imageDimensions={48}
+                        imageDimensions={horizontalScale(48)}
                     />
                     <View style={style.userTextContainer}>
                         <Text style={style.username}>
@@ -28,7 +29,7 @@ const UserPost = props => {
                         )}
                     </View>
                 </View>
-                <FontAwesomeIcon icon={faEllipsisH} size={24} color={'#79869F'} />
+                <FontAwesomeIcon icon={faEllipsisH} size={scaleFontSize(24)} color={'#79869F'} />
             </View>
             <View style={style.postImage}>
                 <Image source={props.image} />

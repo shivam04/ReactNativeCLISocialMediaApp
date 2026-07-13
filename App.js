@@ -5,7 +5,7 @@
  * @format
  */
 
-import { Dimensions, FlatList, Text, TouchableOpacity, View } from 'react-native';
+import { FlatList, Text, TouchableOpacity, View } from 'react-native';
 import Title from './components/Title/Ttitle';
 import {
   SafeAreaProvider,
@@ -17,6 +17,7 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import UserStory from "./components/UserStory/UserStory";
 import UserPost from './components/UserPost/UserPost';
 import { useEffect, useState } from 'react';
+import { scaleFontSize } from './styles/scaling';
 
 function App() {
   const userPosts = [
@@ -134,8 +135,6 @@ function App() {
   const [userPostsRenderedData, setUserPostsRenderedData] = useState([]);
   const [isLoadingUserPosts, setIsLoadingUserPosts] = useState(false);
 
-  const [screenData, setScreenData] = useState(Dimensions.get('screen'));
-
   const pagination = (database, currentPage, pageSize) => {
     const startIndex = (currentPage - 1) * pageSize;
     const endIndex = startIndex + pageSize;
@@ -155,25 +154,11 @@ function App() {
     const getInitialDataPosts = pagination(userPosts, 1, userPostsPageSize);
     setUserPostsRenderedData(getInitialDataPosts);
     setIsLoadingUserPosts(false);
-
-    Dimensions.addEventListener('change', (result) => {
-      setScreenData(result.screen);
-    })
-
   }, [])
 
   return (
     <SafeAreaProvider>
       <SafeAreaView>
-        <View
-          style={{
-            backgroundColor: 'red',
-            width: screenData.width / 2,
-            height: screenData.height / 2
-          }}
-        >
-          <Text style={{ fontSize: screenData.height / 20 }}>This box will have half of the screen width and height</Text>
-        </View>
         <View style={globalStyle.userPostContainer}>
           <FlatList
             ListHeaderComponent={
@@ -183,7 +168,7 @@ function App() {
                   <TouchableOpacity style={globalStyle.messageIcon}>
                     <FontAwesomeIcon
                       icon={faEnvelope}
-                      size={20}
+                      size={scaleFontSize(20)}
                       color={'#898DAE'}
                     />
                     <View style={globalStyle.messageNumberContainer}>
