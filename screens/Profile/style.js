@@ -5,8 +5,8 @@ const { StyleSheet, Platform } = require("react-native");
 
 const style = StyleSheet.create({
     profileImage: {
-        width: horizontalScale(Platform.OS === 'ios' ? 120 : 140),
-        height: verticalScale(110),
+        width: horizontalScale(140),
+        height: verticalScale(120),
     },
     profileImageContainer: {
         flexDirection: 'row',
